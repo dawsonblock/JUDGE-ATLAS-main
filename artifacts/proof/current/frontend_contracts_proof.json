@@ -1,8 +1,0 @@
-{
-  "map_source_to_marker_contract": true,
-  "source_registry_contract": true,
-  "admin_review_contract": true,
-  "map_public_safety_contract": true,
-  "contract_tests_defined": 4,
-  "validation_passed": true
-}

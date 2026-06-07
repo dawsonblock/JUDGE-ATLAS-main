@@ -1,9 +1,0 @@
-{
-  "experimental_routes_default": false,
-  "workflow_admin_default": false,
-  "legacy_us_ingest_default": false,
-  "admin_live_map_default": false,
-  "all_flags_false_by_default": true,
-  "conditional_mounting_enforced": true,
-  "validation_passed": true
-}

@@ -1,7 +1,0 @@
-{
-  "setting_name": "enable_admin_live_map",
-  "default_value": false,
-  "conditional_mount": true,
-  "router_condition": "if settings.enable_admin_live_map: router.include_router(admin_live_map.router)",
-  "validation_passed": true
-}

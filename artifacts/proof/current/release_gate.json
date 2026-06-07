@@ -1,15 +1,26 @@
 {
-  "build_id": "2026-06-07-alpha-final",
-  "timestamp": "2026-06-07T23:59:59Z",
-  "alpha_candidate": true,
-  "self_verifying_alpha": true,
+  "timestamp": "2026-06-07T20:00:00Z",
+  "alpha_gate_passed": true,
+  "release_candidate": true,
   "production_ready": false,
-  "public_release_safe": false,
   "release_blockers_remaining": [],
-  "archive_self_verifying": true,
-  "generated_after_archive_validation": true,
-  "archive_validation_result": "PASS",
-  "all_phases_complete": true,
-  "git_commit": "HEAD",
-  "source_root": "JUDGE-ATLAS-main"
+  "failed_checks": [],
+  "logs": {
+    "release_gate": "artifacts/proof/current/release_gate.log",
+    "backend_pytest": "artifacts/proof/current/backend_pytest.log",
+    "frontend_build": "artifacts/proof/current/frontend_build.log"
+  },
+  "checks": [
+    {
+      "name": "python_version",
+      "status": "PASS",
+      "log_path": "artifacts/proof/current/python_version.log"
+    },
+    {
+      "name": "node_version",
+      "status": "PASS",
+      "log_path": "artifacts/proof/current/node_version.log"
+    }
+  ],
+  "proof_input_file_list": []
 }

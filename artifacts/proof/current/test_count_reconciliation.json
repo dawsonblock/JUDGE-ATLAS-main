@@ -1,6 +1,0 @@
-{
-  "backend_summary_passed": 0,
-  "backend_junit_tests": 0,
-  "explanation": "backend_summary_passed counts top-level selected proof checks; backend_junit_tests counts expanded pytest/JUnit test cases including parameterized cases",
-  "consistent": true
-}

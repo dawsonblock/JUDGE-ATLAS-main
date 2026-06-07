@@ -1,6 +1,5 @@
 {
-  "generated_at": "2026-06-07T19:56:26.238107",
-  "total_entries": 20,
+  "generated_at": "2026-06-07T20:00:18.001044",
   "entries": [
     {
       "path": "artifacts/proof/current/backend_compile.log",
@@ -131,19 +130,19 @@
     {
       "path": "artifacts/proof/current/docker_smoke.log",
       "exists": true,
-      "size_bytes": 38263,
-      "recorded_size_bytes": 38263,
-      "sha256": "0299e064e5c9a212ba6f7b3309e1a690ad5946c2f2a51890e7b2ee5377fe5bd9",
-      "recorded_sha256": "0299e064e5c9a212ba6f7b3309e1a690ad5946c2f2a51890e7b2ee5377fe5bd9",
+      "size_bytes": 55841,
+      "recorded_size_bytes": 55841,
+      "sha256": "b2e5c614bf37fe90c163d8184c1ce9aeceffe347032e05b13fb6341de74a4f9b",
+      "recorded_sha256": "b2e5c614bf37fe90c163d8184c1ce9aeceffe347032e05b13fb6341de74a4f9b",
       "status": "PASS"
     },
     {
       "path": "artifacts/proof/current/frontend_build.log",
       "exists": true,
-      "size_bytes": 0,
-      "recorded_size_bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "recorded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 24,
+      "recorded_size_bytes": 24,
+      "sha256": "133a89871b34969688406237e4f4d06ba44a7cdafccf406a37b4c4dca696e1c2",
+      "recorded_sha256": "133a89871b34969688406237e4f4d06ba44a7cdafccf406a37b4c4dca696e1c2",
       "status": "PASS"
     },
     {
@@ -180,6 +179,15 @@
       "recorded_size_bytes": 323,
       "sha256": "561261d657b5b6b5bd99f9db4f716948b8a6188d16238c6259018c5ac421a7f3",
       "recorded_sha256": "561261d657b5b6b5bd99f9db4f716948b8a6188d16238c6259018c5ac421a7f3",
+      "status": "PASS"
+    },
+    {
+      "path": "artifacts/proof/current/source_registry_proof_pytest.log",
+      "exists": true,
+      "size_bytes": 5,
+      "recorded_size_bytes": 5,
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "recorded_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
       "status": "PASS"
     }
   ]

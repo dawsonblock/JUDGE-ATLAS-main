@@ -72,7 +72,7 @@ class CrawleePoliceReleaseAdapter(CanadianSourceAdapter):
         self._fetch_url: str | None = None
 
     def fetch(self) -> list[dict[str, Any]]:
-        """Fetch and extract news article links from the base URL.
+        """Fetch listing page and extract article links (depth 1).
 
         Uses the project-approved fetcher with SSRF protection and domain
         allowlisting. Extracts links matching police/news patterns.
@@ -124,12 +124,85 @@ class CrawleePoliceReleaseAdapter(CanadianSourceAdapter):
             max_links=self._max_items,
         )
 
-        # Add extracted text for each item
+        # Add placeholder fields that will be populated by fetch_article_depth()
         for item in items:
-            item["text"] = item.get("headline", "")  # Minimal text extraction
             item["record_type"] = _RECORD_TYPE
 
         return items
+
+    def fetch_article_depth(self, item: dict[str, Any]) -> dict[str, Any]:
+        """Fetch individual article and extract content (depth 2).
+
+        Enhances the item with full article content, hashes, and metadata.
+        """
+        from app.ingestion.source_adapters.crawlee_enhanced import (
+            extract_body_text,
+            extract_date_from_html,
+            extract_title_from_html,
+            compute_hashes,
+        )
+
+        url = item.get("url", "")
+        if not url:
+            item["text"] = ""
+            item["content_hash"] = ""
+            item["snapshot_hash"] = ""
+            return item
+
+        # Fetch the individual article
+        result = self._fetcher(
+            url,
+            self._allowed_domains,
+            timeout_seconds=30,
+            max_bytes=512_000,
+        )
+
+        if result.error or not result.raw_content:
+            logger.debug("Failed to fetch article %s: %s", url, result.error)
+            item["text"] = item.get("headline", "")
+            item["content_hash"] = ""
+            item["snapshot_hash"] = ""
+            item["fetch_status"] = "failed"
+            return item
+
+        try:
+            html_content = result.raw_content.decode("utf-8", errors="replace")
+
+            # Extract enhanced metadata
+            title = extract_title_from_html(html_content) or item.get("headline", "")
+            published_at = extract_date_from_html(html_content)
+            body_text = extract_body_text(html_content, max_length=8000)
+
+            # Reject if body is too short
+            if len(body_text) < 100:
+                logger.debug("Article %s too short (%d chars)", url, len(body_text))
+                item["text"] = item.get("headline", "")
+                item["content_hash"] = ""
+                item["snapshot_hash"] = ""
+                item["fetch_status"] = "too_short"
+                return item
+
+            # Compute hashes
+            content_hash, snapshot_hash = compute_hashes(body_text, result.raw_content)
+
+            # Update item with full content
+            item["headline"] = title
+            item["text"] = body_text
+            item["published_at"] = published_at
+            item["content_hash"] = content_hash
+            item["snapshot_hash"] = snapshot_hash
+            item["http_status"] = result.http_status or 200
+            item["content_type"] = result.content_type or "text/html"
+            item["fetch_status"] = "success"
+
+        except Exception as exc:
+            logger.debug("Error processing article %s: %s", url, exc)
+            item["text"] = item.get("headline", "")
+            item["content_hash"] = ""
+            item["snapshot_hash"] = ""
+            item["fetch_status"] = "error"
+
+        return item
 
     def parse(self, raw: list[dict[str, Any]]) -> list[ParsedRecord]:
         """Transform raw crawled items into ParsedRecord objects."""
@@ -164,7 +237,6 @@ class CrawleePoliceReleaseAdapter(CanadianSourceAdapter):
                 item.get("published_at", ""),
             )
 
-            # Build payload with stable identity fields
             payload = {
                 "record_type": _RECORD_TYPE,
                 "source_key": self._source_key,
@@ -173,7 +245,11 @@ class CrawleePoliceReleaseAdapter(CanadianSourceAdapter):
                 "url": url,
                 "extracted_text": item.get("text"),
                 "published_at": item.get("published_at"),
-                "source_quality": "news_only_context",
+                "content_hash": item.get("content_hash"),
+                "snapshot_hash": item.get("snapshot_hash"),
+                "http_status": item.get("http_status"),
+                "content_type": item.get("content_type"),
+                "source_quality": "news_with_full_text",
                 "privacy_status": "needs_review",
                 "publish_recommendation": "review_required",
                 "public_visibility": False,
@@ -195,10 +271,14 @@ class CrawleePoliceReleaseAdapter(CanadianSourceAdapter):
         return records
 
     def run(self) -> IngestionResult:
-        """Execute a full fetch → parse cycle and return an IngestionResult.
+        """Execute a full fetch → parse cycle with depth-2 article fetching.
 
-        This is the primary production ingestion path. It does NOT require
-        database access — the source_runner handles persistence.
+        Depth-2 flow:
+        1. Fetch listing page (depth 1)
+        2. Extract article URLs
+        3. Fetch each article individually (depth 2)
+        4. Extract and hash article content
+        5. Parse to ReviewItem records
 
         Returns:
             IngestionResult with evidence snapshot fields set per contract.
@@ -208,6 +288,7 @@ class CrawleePoliceReleaseAdapter(CanadianSourceAdapter):
             parser_version=PARSER_VERSION,
         )
         try:
+            # Depth 1: Fetch listing page and extract URLs
             raw = self.fetch()
             result.records_fetched = len(raw)
 
@@ -216,6 +297,10 @@ class CrawleePoliceReleaseAdapter(CanadianSourceAdapter):
             result.fetch_http_status = self._fetch_http_status
             result.fetch_content_type = self._fetch_content_type
             result.fetch_url = self._fetch_url
+
+            # Depth 2: Fetch each article and extract full content
+            for item in raw:
+                self.fetch_article_depth(item)
 
             parsed = self.parse(raw)
             result.records_skipped = len(raw) - len(parsed)
@@ -227,7 +312,7 @@ class CrawleePoliceReleaseAdapter(CanadianSourceAdapter):
                         headline=p.payload.get("headline"),
                         url=p.source_url,
                         extracted_text=p.payload.get("extracted_text"),
-                        confidence_score=0.25,  # Low confidence for news context
+                        confidence_score=0.35,  # Slightly higher for full article content
                         payload=p.payload,
                     )
                 )

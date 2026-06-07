@@ -1,0 +1,9 @@
+{
+  "memory_query_schema_defined": true,
+  "require_reviewed_default": true,
+  "require_citations_default": true,
+  "memory_hit_schema_defined": true,
+  "warnings_field_tracked": true,
+  "default_safe_for_legal_use": true,
+  "validation_passed": true
+}

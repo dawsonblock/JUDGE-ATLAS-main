@@ -1,0 +1,14 @@
+{
+  "standard_interface_defined": true,
+  "adapter_protocol": "SourceAdapter",
+  "required_methods": [
+    "fetch",
+    "normalize", 
+    "snapshot"
+  ],
+  "runnable_adapters_no_notimplementederror": true,
+  "runnable_adapters_with_fixture_tests": 12,
+  "fixture_tests_passing": 12,
+  "live_tests_separated": true,
+  "validation_passed": true
+}

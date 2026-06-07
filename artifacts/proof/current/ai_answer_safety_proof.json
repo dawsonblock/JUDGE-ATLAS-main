@@ -1,0 +1,14 @@
+{
+  "runtime_step_result_schema_defined": true,
+  "answer_basis_field_required": true,
+  "confidence_field_required": true,
+  "cited_snapshot_ids_required": true,
+  "review_required_field_enforced": true,
+  "public_safe_field_enforced": true,
+  "hard_rules": {
+    "model_inference_requires_citations": true,
+    "no_citation_blocks_public": true,
+    "contradictions_force_review": true
+  },
+  "validation_passed": true
+}

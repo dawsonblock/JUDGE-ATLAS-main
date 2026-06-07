@@ -1,0 +1,12 @@
+{
+  "archive_path": "dist/JUDGE_ATLAS-main-final.zip",
+  "archive_self_verifying": true,
+  "path_traversal_entries": [],
+  "absolute_path_entries": [],
+  "required_artifacts_checked": 30,
+  "required_artifacts_present": 30,
+  "required_artifacts_missing": [],
+  "build_id_consistent": true,
+  "archive_validation_result": "PASS",
+  "validation_passed": true
+}

@@ -1,0 +1,28 @@
+{
+  "test_name": "source_to_map_pipeline",
+  "timestamp": "2026-06-07T19:34:33.079209+00:00",
+  "fixture": "sk_public_safety_release_001.html",
+  "checks": {
+    "fixture_loads": true,
+    "raw_document_created": true,
+    "normalized_document_created": true,
+    "evidence_snapshot_created": true,
+    "snapshot_hash_stable": true,
+    "event_extracted": true,
+    "event_date_present": true,
+    "event_location_present": true,
+    "event_type_present": true,
+    "unapproved_not_public": true,
+    "approved_becomes_public": true,
+    "geocoding_deterministic": true,
+    "map_endpoint_returns_marker": true,
+    "marker_includes_snapshot_id": true,
+    "marker_includes_citation": true,
+    "citation_url_valid": true,
+    "source_url_preserved": true
+  },
+  "passed": true,
+  "unreviewed_hidden": true,
+  "approved_marker_public": true,
+  "citation_trail_present": true
+}

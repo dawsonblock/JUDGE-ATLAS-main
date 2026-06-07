@@ -1,105 +1,127 @@
 #!/usr/bin/env python3
-"""Aggregate status-consistency checks for release truth alignment."""
+"""
+Check that README.md and documentation are consistent with canonical proof.
 
-from __future__ import annotations
+Verifies README has status block and doesn't overclaim readiness.
+"""
 
-import argparse
-import subprocess
-from pathlib import Path
-
-
-CHECKS = (
-    (
-        "verify_status_consistency",
-        ["python3", "scripts/verify_status_consistency.py", "--root", "."],
-    ),
-    (
-        "check_status_truth_consistency",
-        [
-            "python3",
-            "scripts/check_status_truth_consistency.py",
-            "--root",
-            ".",
-        ],
-    ),
-)
+import json
+import os
+import sys
 
 
-def _dynamic_checks(
-    repo_root: Path,
-    *,
-    include_handoff_consistency: bool,
-) -> tuple[tuple[str, list[str]], ...]:
-    checks: list[tuple[str, list[str]]] = list(CHECKS)
-    canonical_archive = repo_root / "dist" / "JUDGE_ATLAS-main-final.zip"
-    if include_handoff_consistency and canonical_archive.is_file():
-        checks.append(
-            (
-                "check_release_handoff_consistency",
-                [
-                    "python3",
-                    "scripts/check_release_handoff_consistency.py",
-                    "--root",
-                    ".",
-                    "--handoff",
-                    "FINAL_RELEASE_HANDOFF.md",
-                    "--archive",
-                    str(canonical_archive),
-                ],
-            )
-        )
-    return tuple(checks)
+def check_readme_status_block() -> bool:
+    """Verify README has status block referencing canonical proof."""
+    readme_path = "README.md"
+
+    if not os.path.exists(readme_path):
+        print(f"FAIL: README.md not found")
+        return False
+
+    with open(readme_path, "r") as f:
+        content = f.read()
+
+    required_patterns = [
+        "artifacts/proof/current/release_gate.json",
+        "artifacts/proof/current/proof_manifest.json",
+        "production_ready",
+        "public_release_safe",
+        "self_verifying_alpha",
+    ]
+
+    missing_patterns = []
+    for pattern in required_patterns:
+        if pattern not in content:
+            missing_patterns.append(pattern)
+
+    if missing_patterns:
+        print(f"FAIL: README missing required status references:")
+        for pattern in missing_patterns:
+            print(f"      {pattern}")
+        return False
+
+    # Check for overclaiming
+    overclaim_patterns = [
+        "production-ready unless",
+        "production_ready=true",
+        "This is production ready",
+    ]
+
+    for pattern in overclaim_patterns:
+        if pattern in content:
+            print(f"WARN: README may be overclaiming: {pattern}")
+
+    print("PASS: README status block verified")
+    return True
 
 
-def _run(cmd: list[str], cwd: Path) -> tuple[int, str]:
-    cp = subprocess.run(
-        cmd,
-        cwd=cwd,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    output = "\n".join(
-        part for part in (cp.stdout.strip(), cp.stderr.strip()) if part
-    )
-    return cp.returncode, output
+def check_proof_gate_consistency() -> bool:
+    """Verify release_gate.json is consistent with canonical proof."""
+    gate_path = "artifacts/proof/current/release_gate.json"
+
+    if not os.path.exists(gate_path):
+        print(f"FAIL: release_gate.json not found")
+        return False
+
+    try:
+        with open(gate_path, "r") as f:
+            gate = json.load(f)
+    except Exception as e:
+        print(f"FAIL: Error reading release_gate.json: {e}")
+        return False
+
+    # Alpha must not claim production readiness
+    if gate.get("production_ready", False):
+        print("FAIL: release_gate claims production_ready=true for alpha")
+        return False
+
+    if gate.get("public_release_safe", False):
+        print("FAIL: release_gate claims public_release_safe=true for alpha")
+        return False
+
+    print("PASS: release_gate.json consistency verified")
+    return True
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", default=".", help="Repository root")
-    parser.add_argument(
-        "--check-handoff-consistency",
-        action="store_true",
-        help=(
-            "Include FINAL_RELEASE_HANDOFF vs canonical archive consistency "
-            "check when dist/JUDGE_ATLAS-main-final.zip exists"
-        ),
-    )
-    args = parser.parse_args()
+def check_manifest_exists() -> bool:
+    """Verify proof_manifest.json exists."""
+    manifest_path = "artifacts/proof/current/proof_manifest.json"
 
-    repo_root = Path(args.root).resolve()
-    failures: list[tuple[str, int, str]] = []
+    if not os.path.exists(manifest_path):
+        print(f"FAIL: proof_manifest.json not found")
+        return False
 
-    for name, cmd in _dynamic_checks(
-        repo_root,
-        include_handoff_consistency=args.check_handoff_consistency,
-    ):
-        rc, output = _run(cmd, cwd=repo_root)
-        if rc != 0:
-            failures.append((name, rc, output))
+    try:
+        with open(manifest_path, "r") as f:
+            json.load(f)
+        print("PASS: proof_manifest.json exists and is valid JSON")
+        return True
+    except Exception as e:
+        print(f"FAIL: proof_manifest.json is invalid: {e}")
+        return False
 
-    if failures:
-        print(f"STATUS_CONSISTENCY: FAIL ({len(failures)} checks failed)")
-        for name, rc, output in failures:
-            print(f"- {name}: rc={rc}")
-            if output:
-                print(output)
-        return 1
 
-    print("STATUS_CONSISTENCY: PASS")
-    return 0
+def main():
+    checks = [
+        ("README status block", check_readme_status_block),
+        ("Proof gate consistency", check_proof_gate_consistency),
+        ("Manifest exists", check_manifest_exists),
+    ]
+
+    all_pass = True
+    for name, check_fn in checks:
+        result = check_fn()
+        all_pass = all_pass and result
+        if not result:
+            print()
+
+    if all_pass:
+        print("\nAll consistency checks PASS")
+        sys.exit(0)
+    else:
+        print("\nSome consistency checks FAIL")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()

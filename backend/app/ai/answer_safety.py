@@ -55,16 +55,14 @@ class RuntimeStepResult(BaseModel):
             errors.append("No cited sources - cannot be public")
             return False, errors
 
-        # Low confidence requires review
+        # Low confidence requires review - ALWAYS return error reason
         if self.confidence < 0.7:
-            if not self.review_required:
-                errors.append("Low confidence answer requires review before public")
+            errors.append("Low confidence answer requires review before public")
             return False, errors
 
-        # Any warnings require review
+        # Any warnings require review - ALWAYS return error reason
         if self.warnings:
-            if not self.review_required:
-                errors.append("Warnings present - requires review before public")
+            errors.append("Warnings present - requires review before public")
             return False, errors
 
         return True, []

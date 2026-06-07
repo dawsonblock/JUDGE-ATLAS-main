@@ -519,7 +519,7 @@ sources:
   public_record_authority: news_context
   license: all_rights_reserved
   terms_url: https://www.saskatoonpolice.ca
-  base_url: https://www.saskatoonpolice.ca
+  base_url: https://www.saskatoonpolice.ca/news
   allowed_domains:
   - saskatoonpolice.ca
   - www.saskatoonpolice.ca
@@ -947,7 +947,7 @@ sources:
   public_record_authority: news_context
   license: Crown copyright
   terms_url: https://www.saskatchewan.ca/government/about-the-government-of-saskatchewan/terms-of-use
-  base_url: https://www.saskatchewan.ca
+  base_url: https://www.saskatchewan.ca/government/news-and-media
   allowed_domains:
   - saskatchewan.ca
   - www.saskatchewan.ca
@@ -1111,7 +1111,7 @@ sources:
   public_record_authority: news_context
   license: all_rights_reserved
   terms_url: https://www.rcmp-grc.gc.ca/terms-modalites-eng.htm
-  base_url: https://www.rcmp-grc.gc.ca
+  base_url: https://www.rcmp-grc.gc.ca/en/news/releases
   allowed_domains:
   - rcmp-grc.gc.ca
   - www.rcmp-grc.gc.ca

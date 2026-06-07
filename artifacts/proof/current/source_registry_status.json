@@ -1,10 +1,233 @@
 {
-  "total_sources": 27,
-  "machine_ingest_sources": 12,
-  "runnable_now": 12,
-  "enable_ready": 3,
-  "disabled_stub": 0,
-  "deprecated": 12,
-  "classifier_unified": true,
-  "validation_passed": true
+  "status": "PASS",
+  "timestamp": "2026-06-07T00:00:00Z",
+  "classifier_used": "strict_automation_status_plus_lifecycle_state",
+  "summary": {
+    "total_sources": 27,
+    "machine_ingest_sources": 12,
+    "runnable_now": 8,
+    "enable_ready": 3,
+    "deprecated": 3,
+    "adapter_missing": 13,
+    "disabled_stub": 0,
+    "portal_reference": 0
+  },
+  "sources": [
+    {
+      "source_key": "justice_canada_laws_xml",
+      "automation_status": "machine_ready_enabled",
+      "lifecycle_state": "runnable",
+      "classification": "runnable_now",
+      "runnable_now": true,
+      "enable_ready": false
+    },
+    {
+      "source_key": "justice_canada_laws_pit_xml",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "disabled_stub",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "scc_judgments",
+      "automation_status": "deprecated",
+      "lifecycle_state": "deprecated",
+      "classification": "deprecated",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "federal_court_canada_decisions",
+      "automation_status": "deprecated",
+      "lifecycle_state": "deprecated",
+      "classification": "deprecated",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "statscan_crime_tables",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "portal_reference",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "saskatchewan_legislation",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "portal_reference",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "saskatoon_open_data_public_safety",
+      "automation_status": "machine_ready_enabled",
+      "lifecycle_state": "runnable",
+      "classification": "runnable_now",
+      "runnable_now": true,
+      "enable_ready": false
+    },
+    {
+      "source_key": "saskatoon_open_data_crime",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "portal_reference",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "saskatoon_police_open_data",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "portal_reference",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "web_monitor_saskatoon_police_news",
+      "automation_status": "machine_ready_disabled",
+      "lifecycle_state": "runnable_disabled",
+      "classification": "enable_ready",
+      "runnable_now": false,
+      "enable_ready": true
+    },
+    {
+      "source_key": "sk_courts_qb_decisions",
+      "automation_status": "machine_ready_enabled",
+      "lifecycle_state": "runnable",
+      "classification": "runnable_now",
+      "runnable_now": true,
+      "enable_ready": false
+    },
+    {
+      "source_key": "sk_courts_ca_decisions",
+      "automation_status": "machine_ready_enabled",
+      "lifecycle_state": "runnable",
+      "classification": "runnable_now",
+      "runnable_now": true,
+      "enable_ready": false
+    },
+    {
+      "source_key": "statscan_ccjs_crime_sk",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "portal_reference",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "statscan_ucr_national",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "portal_reference",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "canlii_sk",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "portal_reference",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "federal_court_canada",
+      "automation_status": "machine_ready_enabled",
+      "lifecycle_state": "runnable",
+      "classification": "runnable_now",
+      "runnable_now": true,
+      "enable_ready": false
+    },
+    {
+      "source_key": "scc_decisions",
+      "automation_status": "machine_ready_enabled",
+      "lifecycle_state": "runnable",
+      "classification": "runnable_now",
+      "runnable_now": true,
+      "enable_ready": false
+    },
+    {
+      "source_key": "sk_justice_ministry",
+      "automation_status": "machine_ready_disabled",
+      "lifecycle_state": "runnable_disabled",
+      "classification": "enable_ready",
+      "runnable_now": false,
+      "enable_ready": true
+    },
+    {
+      "source_key": "sk_legislature_hansard",
+      "automation_status": "machine_ready_enabled",
+      "lifecycle_state": "runnable",
+      "classification": "runnable_now",
+      "runnable_now": true,
+      "enable_ready": false
+    },
+    {
+      "source_key": "canada_open_data_crime",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "portal_reference",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "rcmp_sk_news",
+      "automation_status": "machine_ready_disabled",
+      "lifecycle_state": "runnable_disabled",
+      "classification": "enable_ready",
+      "runnable_now": false,
+      "enable_ready": true
+    },
+    {
+      "source_key": "canada_justice_laws",
+      "automation_status": "disabled_stub",
+      "lifecycle_state": "deprecated",
+      "classification": "deprecated",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "saskatoon_open_data_portal",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "portal_reference",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "justice_canada_laws_xml_repo",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "manual_reference",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "justice_canada_lims_xml_dtd",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "manual_reference",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "justice_canada_otto_reference",
+      "automation_status": "adapter_missing",
+      "lifecycle_state": "manual_reference",
+      "classification": "adapter_missing",
+      "runnable_now": false,
+      "enable_ready": false
+    },
+    {
+      "source_key": "sk_court_of_appeal",
+      "automation_status": "machine_ready_enabled",
+      "lifecycle_state": "runnable",
+      "classification": "runnable_now",
+      "runnable_now": true,
+      "enable_ready": false
+    }
+  ]
 }

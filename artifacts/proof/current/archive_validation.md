@@ -1,15 +1,15 @@
 # Archive Validation
 
-- validated_at_utc: 2026-06-07T20:00:22.777434+00:00
+- validated_at_utc: 2026-06-07T20:47:31.634829+00:00
 - archive: dist/JUDGE_ATLAS-main-final.zip
-- archive_sha256: 8a1e2287f114ff3360567f58397e1b099a5f4fb46286db06b87c8c2598db0d98
+- archive_sha256: c34bab3143dbd1b37e9596da6f0b9e17b4b46a1d5dc67021bf14c266ed37ecc2
 - expected_root: JUDGE_ATLAS-main
 - actual_root: JUDGE_ATLAS-main
 - top_level_roots: JUDGE_ATLAS-main
 - root_match: yes
 - valid: PASS
-- compressed_size_bytes: 2253317
-- uncompressed_size_bytes: 8692557
+- compressed_size_bytes: 2196424
+- uncompressed_size_bytes: 8303846
 
 ## Errors
 
@@ -25,11 +25,9 @@
 |---|---:|---:|
 | JUDGE_ATLAS-main/backend/uv.lock | 769811 | 238625 |
 | JUDGE_ATLAS-main/frontend/package-lock.json | 393441 | 85028 |
-| JUDGE_ATLAS-main/artifacts/proof/current/backend_pytest_collect.log | 345415 | 48426 |
 | JUDGE_ATLAS-main/scripts/release_gate.py | 129205 | 23958 |
 | JUDGE_ATLAS-main/backend/app/models/entities.py | 101799 | 16701 |
-| JUDGE_ATLAS-main/artifacts/proof/current/docker_smoke.log | 55841 | 10417 |
-| JUDGE_ATLAS-main/backend/app/ingestion/sources/canada_saskatchewan_sources.yaml | 50959 | 7069 |
+| JUDGE_ATLAS-main/backend/app/ingestion/sources/canada_saskatchewan_sources.yaml | 51007 | 7095 |
 | JUDGE_ATLAS-main/backend/app/memory/contradiction_engine.py | 48640 | 8977 |
 | JUDGE_ATLAS-main/backend/app/api/routes/admin_sources.py | 46299 | 9283 |
 | JUDGE_ATLAS-main/backend/app/tests/test_api.py | 43536 | 7488 |
@@ -43,21 +41,23 @@
 | JUDGE_ATLAS-main/scripts/validate_release_archive.py | 28274 | 5888 |
 | JUDGE_ATLAS-main/backend/app/tests/test_graph_layer.py | 28216 | 4765 |
 | JUDGE_ATLAS-main/backend/app/seed/sample_data.py | 25376 | 4657 |
+| JUDGE_ATLAS-main/backend/app/tests/test_memory_runtime.py | 24708 | 4490 |
+| JUDGE_ATLAS-main/scripts/validate_final_zip.py | 24693 | 5935 |
 
 ## Largest Top-Level Directories
 
 | path | uncompressed |
 |---|---:|
-| backend | 5736848 |
-| scripts | 1074054 |
+| backend | 5761818 |
+| scripts | 1076851 |
 | frontend | 889281 |
-| artifacts | 428493 |
 | docs | 390574 |
 | .github | 68497 |
 | demo | 26537 |
 | infra | 17264 |
 | Makefile | 15098 |
 | README.md | 15031 |
+| artifacts | 12000 |
 | REPO_REALITY.md | 8240 |
 | STUBS_AND_PLACEHOLDERS.md | 4772 |
 | STATUS.md | 3470 |
@@ -65,7 +65,7 @@
 | CURRENT_STATUS.md | 2785 |
 | docker-compose.yml | 2518 |
 | RELEASE_BLOCKERS.md | 2410 |
-| RELEASE_MANIFEST.json | 1312 |
+| RELEASE_MANIFEST.json | 1327 |
 | REPAIR_STATUS.md | 1122 |
 | Dockerfile.proof | 890 |
 | deploy | 389 |

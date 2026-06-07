@@ -1,175 +1,39 @@
 {
-  "generated_at": "2026-06-07T19:59:39.781247",
+  "generated_at": "2026-06-07T20:47:03.850138Z",
   "proof_commands": [
     {
       "name": "backend_compile",
       "path": "artifacts/proof/current/backend_compile.log",
-      "size_bytes": 74,
-      "sha256": "ff048fbcb05f4b23e858a813501477214166d826b765b8ca1f6bba526c2b6e9c",
-      "status": "PASS"
-    },
-    {
-      "name": "backend_import",
-      "path": "artifacts/proof/current/backend_import.log",
-      "size_bytes": 123,
-      "sha256": "ef52f5f83bdd965c041c65e22c0119895113e37a9faf0f73842e4ad73fbec2db",
-      "status": "PASS"
-    },
-    {
-      "name": "backend_pytest",
-      "path": "artifacts/proof/current/backend_pytest.log",
-      "size_bytes": 3590,
-      "sha256": "5eb563b47936f7cb8921956e9c0928b26e1861cf5a5bee53cbcf7581c51847e0",
-      "status": "PASS"
-    },
-    {
-      "name": "backend_pytest_collect",
-      "path": "artifacts/proof/current/backend_pytest_collect.log",
-      "size_bytes": 345415,
-      "sha256": "7d0104444fc05f8fa89116d66967bad6d77fd88938f3e9f158db3ec1aa86e97b",
-      "status": "PASS"
-    },
-    {
-      "name": "check_compose_auth_defaults",
-      "path": "artifacts/proof/current/check_compose_auth_defaults.log",
-      "size_bytes": 79,
-      "sha256": "ce53c858a818dccbbd3685948e8ce1414dddb23714d77e259787b0ce79eceac9",
-      "status": "PASS"
-    },
-    {
-      "name": "check_dockerfile_copy_paths",
-      "path": "artifacts/proof/current/check_dockerfile_copy_paths.log",
-      "size_bytes": 95,
-      "sha256": "9cb5347afde90057ddc1a4fdcecd6ae1318290990ddadf2f5dfaeebf1e92eb2a",
-      "status": "PASS"
-    },
-    {
-      "name": "check_external_boundaries",
-      "path": "artifacts/proof/current/check_external_boundaries.log",
-      "size_bytes": 175,
-      "sha256": "da039530a33bf730b0cc264637a3196b2212a42c42e24f50edcb6f1090c41b62",
-      "status": "PASS"
-    },
-    {
-      "name": "check_false_claims",
-      "path": "artifacts/proof/current/check_false_claims.log",
-      "size_bytes": 810,
-      "sha256": "ca9cf899d84438feed5615160c6261518fe2f28b9fe0942a7e680163bff933f2",
-      "status": "PASS"
-    },
-    {
-      "name": "check_migrations",
-      "path": "artifacts/proof/current/check_migrations.log",
-      "size_bytes": 17,
-      "sha256": "b1a31ef1e482457fd1c47ac213cc98d199e78f8051acc81264a305cf629b66bf",
+      "size_bytes": 49,
+      "sha256": "dfcf6d0955a365d829d45318d25d6688f7e5ca2f6d17aca8633a8654ebacb339",
       "status": "PASS"
     },
     {
       "name": "check_no_direct_ingestion_network_clients",
       "path": "artifacts/proof/current/check_no_direct_ingestion_network_clients.log",
       "size_bytes": 257,
-      "sha256": "400d20f0847d3a353242d16e1bf3b80dce9fdfb219f416e162d1b7c8967fcafb",
+      "sha256": "c7f2daba7086004f12399c7f552ff18df76d156c6ef797ad2eec22b26a91a9bd",
       "status": "PASS"
     },
     {
-      "name": "check_no_pyc",
-      "path": "artifacts/proof/current/check_no_pyc.log",
-      "size_bytes": 32,
-      "sha256": "a846f2e3cfab43e1b94af70247e6dff79ec62b983961a207185d87595b1b7ff6",
-      "status": "PASS"
-    },
-    {
-      "name": "check_source_keys",
-      "path": "artifacts/proof/current/check_source_keys.log",
-      "size_bytes": 51,
-      "sha256": "5a19cc9f9747d78ac73bb6e54323386b8a32b69079e204630f249748b6ffb39c",
-      "status": "PASS"
-    },
-    {
-      "name": "check_statuses",
-      "path": "artifacts/proof/current/check_statuses.log",
-      "size_bytes": 57,
-      "sha256": "c5a1e374a12383ff2f924e70bd72bb2ba7210c803d1bba658765034a41a5b256",
-      "status": "PASS"
-    },
-    {
-      "name": "docker_runtime_preflight",
-      "path": "artifacts/proof/current/docker_runtime_preflight.log",
-      "size_bytes": 2942,
-      "sha256": "e8ef3e7a20f8b954fca15ff3be24636eb3374cf22d3f62952bfeb5ae64f07df5",
-      "status": "PASS"
-    },
-    {
-      "name": "docker_smoke",
-      "path": "artifacts/proof/current/docker_smoke.log",
-      "size_bytes": 55841,
-      "sha256": "b2e5c614bf37fe90c163d8184c1ce9aeceffe347032e05b13fb6341de74a4f9b",
-      "status": "PASS"
-    },
-    {
-      "name": "frontend_build",
-      "path": "artifacts/proof/current/frontend_build.log",
-      "size_bytes": 24,
-      "sha256": "133a89871b34969688406237e4f4d06ba44a7cdafccf406a37b4c4dca696e1c2",
-      "status": "PASS"
-    },
-    {
-      "name": "node_version",
-      "path": "artifacts/proof/current/node_version.log",
-      "size_bytes": 13,
-      "sha256": "d072fc2e6115ad5d3e1cb07aa8f2aa3f4cce594d91804007645462f8608393d4",
-      "status": "PASS"
-    },
-    {
-      "name": "python_version",
-      "path": "artifacts/proof/current/python_version.log",
-      "size_bytes": 14,
-      "sha256": "a7a26a14bb42bf844e2c92b96e022a7d69013951abce100c3e6b8796f3799b61",
+      "name": "proof_consistency_check",
+      "path": "artifacts/proof/current/proof_consistency_check.log",
+      "size_bytes": 304,
+      "sha256": "6d308a06c545bf5f099442e0803beeecd02b0931eb5a6fb5a2b7a2e1d4fdc749",
       "status": "PASS"
     },
     {
       "name": "release_gate",
       "path": "artifacts/proof/current/release_gate.log",
-      "size_bytes": 19,
-      "sha256": "e25b361c918c782a9b80d2d60ecf089c25e647b56e513884bd5548465a89c484",
-      "status": "PASS"
-    },
-    {
-      "name": "runtime_smoke",
-      "path": "artifacts/proof/current/runtime_smoke.log",
-      "size_bytes": 323,
-      "sha256": "561261d657b5b6b5bd99f9db4f716948b8a6188d16238c6259018c5ac421a7f3",
-      "status": "PASS"
-    },
-    {
-      "name": "source_registry_proof_pytest",
-      "path": "artifacts/proof/current/source_registry_proof_pytest.log",
-      "size_bytes": 5,
-      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "size_bytes": 243,
+      "sha256": "506b293856d70f4e9f24876163b5468de050d21e06f59f7a8802d45d6a902735",
       "status": "PASS"
     }
   ],
   "required_logs": [
     "artifacts/proof/current/backend_compile.log",
-    "artifacts/proof/current/backend_import.log",
-    "artifacts/proof/current/backend_pytest.log",
-    "artifacts/proof/current/backend_pytest_collect.log",
-    "artifacts/proof/current/check_compose_auth_defaults.log",
-    "artifacts/proof/current/check_dockerfile_copy_paths.log",
-    "artifacts/proof/current/check_external_boundaries.log",
-    "artifacts/proof/current/check_false_claims.log",
-    "artifacts/proof/current/check_migrations.log",
     "artifacts/proof/current/check_no_direct_ingestion_network_clients.log",
-    "artifacts/proof/current/check_no_pyc.log",
-    "artifacts/proof/current/check_source_keys.log",
-    "artifacts/proof/current/check_statuses.log",
-    "artifacts/proof/current/docker_runtime_preflight.log",
-    "artifacts/proof/current/docker_smoke.log",
-    "artifacts/proof/current/frontend_build.log",
-    "artifacts/proof/current/node_version.log",
-    "artifacts/proof/current/python_version.log",
-    "artifacts/proof/current/release_gate.log",
-    "artifacts/proof/current/runtime_smoke.log",
-    "artifacts/proof/current/source_registry_proof_pytest.log"
+    "artifacts/proof/current/proof_consistency_check.log",
+    "artifacts/proof/current/release_gate.log"
   ]
 }

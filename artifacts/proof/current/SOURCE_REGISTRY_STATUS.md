@@ -1,3 +1,3 @@
-# SOURCE_REGISTRY_STATUS
+# Source Registry
 
-- status: in_progress
+See source_registry_status.json

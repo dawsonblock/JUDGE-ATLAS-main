@@ -1,0 +1,10 @@
+{
+  "build_id": "2026-06-07-honest-alpha",
+  "timestamp": "2026-06-07T20:46:46.826333Z",
+  "canonical_name": "JUDGE_ATLAS-main-final.zip",
+  "canonical_root": "JUDGE_ATLAS-main",
+  "alpha_candidate": true,
+  "self_verifying": true,
+  "production_ready": false,
+  "public_release_safe": false
+}

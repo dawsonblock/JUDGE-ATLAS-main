@@ -1,0 +1,44 @@
+{
+  "source_key": "sk_court_of_appeal",
+  "source_name": "Court of Appeal for Saskatchewan - Judgments",
+  "description": "Sample fixture for Saskatchewan Court of Appeal RSS feed tests",
+  "sample_items": [
+    {
+      "title": "Smith v. Jones - 2024 SKCA 123",
+      "link": "https://sasklawcourts.ca/decisions/2024-skca-123",
+      "description": "Decision regarding contract interpretation.",
+      "pubDate": "Mon, 15 Jan 2024 10:30:00 GMT"
+    },
+    {
+      "title": "R. v. Doe 2023 SKCA 45",
+      "link": "https://sasklawcourts.ca/decisions/2023-skca-45",
+      "description": "Criminal law decision regarding evidence.",
+      "pubDate": "2023-06-20"
+    },
+    {
+      "title": "ABC Corp. v. XYZ Ltd.",
+      "link": "https://sasklawcourts.ca/decisions/abc-v-xyz",
+      "description": "Civil procedure decision without neutral citation.",
+      "pubDate": "Tue, 10 Oct 2023 14:00:00 GMT"
+    }
+  ],
+  "expected_parse_results": {
+    "total_items": 3,
+    "with_citations": 2,
+    "without_citations": 1,
+    "confidence_high": 2,
+    "confidence_medium": 1
+  },
+  "rss_url": "https://sasklawcourts.ca/rss/ca.xml",
+  "test_metadata": {
+    "created": "2026-06-06",
+    "adapter_version": "1.0",
+    "test_type": "unit_and_integration",
+    "validates": [
+      "title_parsing",
+      "citation_extraction",
+      "date_parsing",
+      "evidence_snapshot_fields"
+    ]
+  }
+}

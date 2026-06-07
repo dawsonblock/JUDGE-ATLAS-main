@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "note": "This file is a static baseline. Authoritative current blocker state is always derived from artifacts/proof/current/release_gate.json at proof time.",
+  "authority": "artifacts/proof/current/release_gate.json",
+  "readiness_narrative": "artifacts/proof/current/release_readiness.md",
+  "current_proof_summary": "artifacts/proof/current/CURRENT_PROOF.md",
+  "policy": {
+    "alpha_gate_passed": "derive from release_gate.json alpha_gate_passed",
+    "production_ready": false,
+    "production_release_candidate": false,
+    "public_release_safe": false,
+    "release_candidate": false
+  },
+  "known_deferred_scope": [
+    "stub adapters for non-runnable sources",
+    "PostGIS production runtime proof",
+    "egress proxy production proof",
+    "full production auth migration (legacy token removal)",
+    "real-time alerting"
+  ],
+  "release_blockers_remaining": "derive from release_gate.json release_blockers_remaining"
+}
